@@ -2,6 +2,16 @@ from threading import Thread
 from constants import COLORS, RUNNING, WARNING, FAILED
 
 
+class Gameloop(Thread):
+	daemon = True
+
+	def __init__(self, ship, *args, **kwargs):
+		super(Gameloop,self).__init__(*args, **kwargs)
+		self.ship = ship
+
+	def run(self):
+		pass
+
 class Station:
 	def __init__(self, index):
 		self.index = index
@@ -27,3 +37,10 @@ class Ship:
 			Station(i)
 			for i in range(station_count)
 		]
+		
+		self.thread = Gameloop(self)
+		self.thread.run()
+
+	def stop(self):
+		self.thread.stop()
+		stations = []
