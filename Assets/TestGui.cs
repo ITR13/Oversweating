@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class TestGui : MonoBehaviour
 {
-    private string _stationCount = "5", _playerCount = "2";
+    private string _stationCount = "5", _playerCount = "2", _stationId = "";
     private StationInfo[] infos = new StationInfo[5];
     private float[] timers = new float[5];
 
     private void Start()
     {
+        StationManager.StationId = -1;
         for (var i = 0; i < infos.Length; i++)
         {
             StartCoroutine(StartPolling(i));
@@ -36,7 +38,9 @@ class TestGui : MonoBehaviour
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(20, 20, 200, 20));
+        GUI.skin.GetStyle("TextField").alignment = TextAnchor.MiddleCenter;
+
+        GUILayout.BeginArea(new Rect(20, 20, Screen.width - 40, 20));
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Setup"))
         {
@@ -47,9 +51,21 @@ class TestGui : MonoBehaviour
         }
 
         GUILayout.Label("Stations");
-        _stationCount = GUILayout.TextField(_stationCount);
+        _stationCount = GUILayout.TextField(_stationCount, GUILayout.Width(20));
         GUILayout.Label("Players");
-        _playerCount = GUILayout.TextField(_playerCount);
+        _playerCount = GUILayout.TextField(_playerCount, GUILayout.Width(20));
+
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Station Id");
+        _stationId = GUILayout.TextField(_stationId, GUILayout.Width(20));
+        if (GUILayout.Button("Join"))
+        {
+            StationManager.StationId = int.Parse(_stationId);
+            StopAllCoroutines();
+            SceneManager.LoadScene(1);
+        }
+
+
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
 
@@ -149,7 +165,13 @@ class TestGui : MonoBehaviour
     {
         while (true)
         {
-            var request = NetworkManager.Instance.Info(stationIndex);
+            if (!NetworkManager.InstanceSet)
+            {
+                yield return null;
+                continue;
+            }
+
+            var (request, op) = NetworkManager.Instance.Info(stationIndex);
             while (request.downloadProgress < 1)
             {
                 yield return null;
