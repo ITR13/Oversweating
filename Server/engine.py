@@ -39,8 +39,7 @@ class Gameloop(Thread):
 
 	def check_next_wave(self, dt):
 		faults = self.current_wave["faults"]
-		# print(len(faults), self.safe_stations, self.wave_timer)
-		if len(faults) > self.safe_stations:
+		if self.safe_stations > 0:
 			return
 
 		self.wave_timer -= dt
