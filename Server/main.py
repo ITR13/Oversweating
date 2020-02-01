@@ -12,6 +12,8 @@ ship = None
 @app.route('/setup', methods=['GET', 'POST'])
 def setup_game():
 	global ship
+	if ship is not None:
+		ship.stop()
 
 	success, data = parse_form({'station_count':int, 'player_count':int})
 	if not success:
@@ -23,7 +25,11 @@ def setup_game():
 @app.route('/stop')
 def stop_game():
 	global ship
+	if ship is None:
+		return "Already stopped"
+	ship.stop()
 	ship = None
+	return "Success"
 
 
 @app.route('/info/<int:station_id>')
