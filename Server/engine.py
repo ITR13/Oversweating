@@ -32,10 +32,12 @@ class Gameloop(Thread):
 
 			self.check_next_wave(delta_time)
 			self.check_faults_cleared()
-			# self.check_faults_lost()
+			self.check_faults_lost(current_time)
 
 		if self.stopped:
 			return
+			
+		print("Game lost")
 
 
 	def check_next_wave(self, dt):
@@ -77,6 +79,16 @@ class Gameloop(Thread):
 					break
 			else:
 				station.clear_faults()
+				self.recalc_safe_stations()
+		
+	def check_faults_lost(self, current_time):
+		for station in self.ship.stations:
+			if station.end_time is None:
+				continue
+			if station.end_time + 1 <= current_time:
+				self.ship.fail()
+				self.lost = True
+				break
 
 	def recalc_safe_stations(self):
 		self.safe_stations = 0
@@ -96,6 +108,7 @@ class Station:
 		self.components = [0] * len(self.component_names)
 
 		self.faults = None
+		self.end_time = None
 
 	def activate(self, component_index, button_index):
 		component = self.component_names[component_index]
@@ -138,14 +151,16 @@ class Station:
 	def fail(self):
 		self.status = FAILED
 
-	def set_faults(self, faults):
+	def set_faults(self, faults, end_time):
 		self.status = WARNING
 		self.faults = faults
-		print(f"Warning on {self.index}")
+		self.end_time = end_time
+		print(f"Warning on {self.index}, ending at {end_time}")
 
 	def clear_faults(self):
 		self.status = RUNNING
 		self.faults = None
+		self.end_time = None
 		print(f"Cleared {self.index}")
 
 	def has_state(self, component_states):
@@ -201,7 +216,7 @@ class Ship:
 			for faults, station
 			in zip(fault_list, selected_stations)
 		]
-		selected_station.set_faults(station_faults)
+		selected_station.set_faults(station_faults, time() + 15 * (0.8 ** (self.player_count - 1)))
 
 
 	def stop(self):
