@@ -46,19 +46,19 @@ for name, paths in [button, compass, lever, switch]:
 	tile_width = frames[0].size[0]
 	tile_height = frames[0].size[1]
 	
-	columns = (len(frames) // color_count)
+	rows = (len(frames) // color_count)
 	
-	width = tile_width * columns
-	height = tile_height * color_count
+	width = tile_width * color_count
+	height = tile_height * rows
 	
 	spritesheet = Image.new("RGBA",(width, height))
 	for n, frame in enumerate(frames):
-		x = (n % columns) * tile_width
-		y = (n // columns) * tile_height
+		x = (n // rows) * tile_width
+		y = (n % rows) * tile_height
 		
 		box = (x, y, x+tile_width, y+tile_height)
 		spritesheet.paste(frame, box)
 	
-	spritesheet.save(f"./../{name}Sheet.png", "PNG")
+	spritesheet.save(f"./../Resources/{name}Sheet.png", "PNG")
 
 
