@@ -17,6 +17,8 @@ public class UiComponent : MonoBehaviour
     private int _state, _color;
     public int state, color;
 
+    public Action<int> onClick;
+
 
     private void Start()
     {
@@ -57,5 +59,10 @@ public class UiComponent : MonoBehaviour
             ) % sprites.Length;
 
         image.sprite = sprites[index];
+    }
+
+    public void Activate(int button)
+    {
+        onClick?.Invoke(button);
     }
 }

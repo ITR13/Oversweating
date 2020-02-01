@@ -118,7 +118,7 @@ public class StationManager : MonoBehaviour
                     return;
                 }
 
-                _activeUiStation.UpdateInfo(_myStationInfo);
+                UpdateActiveStation();
 
             };
             return;
@@ -134,6 +134,18 @@ public class StationManager : MonoBehaviour
         }
 
         UpdateStationInfo();
+    }
+
+    private void UpdateActiveStation()
+    {
+        _activeUiStation.UpdateInfo(
+            _myStationInfo,
+            (componentIndex, button) => NetworkManager.Instance.Activate(
+                StationId,
+                componentIndex,
+                button
+            )
+        );
     }
 
     private void UpdateStationInfo()
@@ -164,7 +176,7 @@ public class StationManager : MonoBehaviour
 
             if (_activeUiStation != null)
             {
-                _activeUiStation.UpdateInfo(_myStationInfo);
+                UpdateActiveStation();
             }
         };
     }
