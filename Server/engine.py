@@ -195,6 +195,7 @@ class Station:
 			"preset_index": self.preset_index,
 			"components": self.components,
 			"faults": faults,
+			"end_time": self.end_time if self.end_time is not None else -1.0,
 		}
 
 

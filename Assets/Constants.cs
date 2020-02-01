@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public static class Constants
 {
@@ -18,6 +19,8 @@ public static class Constants
             {StationStatus.Warning, "warning"},
             {StationStatus.Failed, "failed"},
         };
+    
+    public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0);
 }
 
 public enum StationStatus

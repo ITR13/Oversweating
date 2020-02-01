@@ -6,6 +6,7 @@ class TestGui : MonoBehaviour
 {
     private string _stationCount = "5", _playerCount = "2";
     private StationInfo[] infos = new StationInfo[5];
+    private float[] timers = new float[5];
 
     private void Start()
     {
@@ -14,6 +15,24 @@ class TestGui : MonoBehaviour
             StartCoroutine(StartPolling(i));
         }
     }
+
+    private void Update()
+    {
+        for (var i = 0; i < timers.Length; i++)
+        {
+            if (infos[i] == null || infos[i].end_time <= 0)
+            {
+                timers[i] = -1;
+                continue;
+            }
+
+            var now = DateTime.Now.AddHours(-1); // Hack timezone fix
+            var currentSeconds = (now - Constants.Epoch).TotalSeconds;
+            var delta = infos[i].end_time - currentSeconds;
+            if (delta < 0) delta = 0;
+            timers[i] = (float)delta;
+        }
+    }       
 
     private void OnGUI()
     {
@@ -84,7 +103,7 @@ class TestGui : MonoBehaviour
         }
 
         GUILayout.Space(1);
-        GUILayout.Label("<b>Warning</b>");
+        GUILayout.Label($"<b>Warning * {timers[stationIndex]}</b>");
 
         if (info.faults == null) return;
 

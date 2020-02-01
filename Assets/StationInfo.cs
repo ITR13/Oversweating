@@ -9,9 +9,10 @@ public class StationInfo
 {
     public string color;
     public int[] components;
-    public FaultList[] faults;
     public int preset_index;
     public string status;
+    public FaultList[] faults;
+    public double end_time;
 
     public override string ToString()
     {
