@@ -40,7 +40,23 @@ switch = (
 	]
 )
 
-for name, paths in [button, compass, lever, switch]:
+station = (
+	"StationIcon",
+	[
+		f"Station_{color}.png"
+		for color in colors
+	]
+)
+
+warning = (
+	"Warning",
+	[
+		f"Warning_{color}.png"
+		for color in colors
+	]
+)
+
+for name, paths in [button, compass, lever, switch, station, warning]:
 	frames = [
 		Image.open(path)
 		for path in paths
