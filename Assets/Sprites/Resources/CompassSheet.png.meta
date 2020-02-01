@@ -1,0 +1,583 @@
+fileFormatVersion: 2
+guid: 17e748fdc411eb249b386e5ed679e8dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5303646027226827990
+    second: CompassSheet_0
+  - first:
+      213: -7544287465620284886
+    second: CompassSheet_1
+  - first:
+      213: -8165298418818997712
+    second: CompassSheet_2
+  - first:
+      213: 5279907770200577765
+    second: CompassSheet_3
+  - first:
+      213: -8411178920519424885
+    second: CompassSheet_4
+  - first:
+      213: 1568267088980021519
+    second: CompassSheet_5
+  - first:
+      213: 6846600800860346702
+    second: CompassSheet_6
+  - first:
+      213: 9179966073701304327
+    second: CompassSheet_7
+  - first:
+      213: 1342243920764348054
+    second: CompassSheet_8
+  - first:
+      213: -7986572506672733195
+    second: CompassSheet_9
+  - first:
+      213: 6790460359316880721
+    second: CompassSheet_10
+  - first:
+      213: -7608632482081786025
+    second: CompassSheet_11
+  - first:
+      213: -4226993529974355492
+    second: CompassSheet_12
+  - first:
+      213: -52074597624948849
+    second: CompassSheet_13
+  - first:
+      213: 8100320071049603605
+    second: CompassSheet_14
+  - first:
+      213: -4368876367139034265
+    second: CompassSheet_15
+  - first:
+      213: 607447713617988557
+    second: CompassSheet_16
+  - first:
+      213: 4149663450015084352
+    second: CompassSheet_17
+  - first:
+      213: -4578118010798600302
+    second: CompassSheet_18
+  - first:
+      213: 3102750033937288874
+    second: CompassSheet_19
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CompassSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2574
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23bbb4c90aa566b0800000000000000
+      internalID: -5303646027226827990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_1
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 2574
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a5548758e4d4790800000000000000
+      internalID: -7544287465620284886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 2574
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0322c3589580fae80800000000000000
+      internalID: -8165298418818997712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 2574
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e651a19420064940800000000000000
+      internalID: 5279907770200577765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_4
+      rect:
+        serializedVersion: 2
+        x: 3108
+        y: 2574
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b84af2c065d754b80800000000000000
+      internalID: -8411178920519424885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1716
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f01179fbb9a93c510800000000000000
+      internalID: 1568267088980021519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_6
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1716
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e499f2e4723040f50800000000000000
+      internalID: 6846600800860346702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 1716
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7088a19a18ac56f70800000000000000
+      internalID: 9179966073701304327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_8
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 1716
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69626130cbb90a210800000000000000
+      internalID: 1342243920764348054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_9
+      rect:
+        serializedVersion: 2
+        x: 3108
+        y: 1716
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f3eedeae9ef92190800000000000000
+      internalID: -7986572506672733195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 858
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d347a28bf8c3e50800000000000000
+      internalID: 6790460359316880721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_11
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 858
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757340fd115b86690800000000000000
+      internalID: -7608632482081786025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 858
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd90102b7c3b655c0800000000000000
+      internalID: -4226993529974355492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_13
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 858
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f875ebaed6ef64ff0800000000000000
+      internalID: -52074597624948849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_14
+      rect:
+        serializedVersion: 2
+        x: 3108
+        y: 858
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ae0e1ff2e1a6070800000000000000
+      internalID: 8100320071049603605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b24156712ae53c0800000000000000
+      internalID: -4368876367139034265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_16
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 0
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbc2d52a761e6800800000000000000
+      internalID: 607447713617988557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_17
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 0
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f22930ce0969930800000000000000
+      internalID: 4149663450015084352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_18
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 0
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f0882dce14770c0800000000000000
+      internalID: -4578118010798600302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CompassSheet_19
+      rect:
+        serializedVersion: 2
+        x: 3108
+        y: 0
+        width: 777
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaec9af77be2f0b20800000000000000
+      internalID: 3102750033937288874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

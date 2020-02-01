@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class Constants
 {
@@ -22,6 +23,19 @@ public static class Constants
         };
     
     public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0);
+
+
+    public static int ColorCount => Pallettes.Count;
+
+    public static Dictionary<string, Pallette> Pallettes =
+        new Dictionary<string, Pallette>
+        {
+            {"pink", new Pallette(0, "#FF9FF3", "#F368E0")},
+            {"yellow", new Pallette(1, "#FECA57", "#FF9F43")},
+            {"red", new Pallette(2, "#FF6B6B", "#EE5253")},
+            {"blue", new Pallette(3, "#48DBFB", "#0ABDE3")},
+            {"purple", new Pallette(4, "#8768DC", "#7D32EE")},
+        };
 }
 
 public enum StationStatus
@@ -39,4 +53,18 @@ public enum Component
     Lever,
     Switch,
     Compass,
+}
+
+public struct Pallette
+{
+    public int Index;
+    public Color BackgroundColor;
+    public Color TintColor;
+
+    public Pallette(int index, string backgroundHex, string tintHex)
+    {
+        Index = index;
+        ColorUtility.TryParseHtmlString(backgroundHex, out BackgroundColor);
+        ColorUtility.TryParseHtmlString(tintHex, out TintColor);
+    }
 }
