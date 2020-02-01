@@ -205,7 +205,7 @@ class Ship:
 		self.player_count = player_count
 
 		self.stations = [
-			Station(i, i % 2)
+			Station(i, 0)
 			for i in range(station_count)
 		]
 

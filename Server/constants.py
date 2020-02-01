@@ -2,7 +2,7 @@ import random
 
 PORT = 5000
 
-COLORS = ["pink", "blue", "orange", "green", "yellow"]
+COLORS = ["pink", "yellow", "red", "blue", "purple"]
 
 STOPPED = "stopped"
 DISABLED = "disabled"
