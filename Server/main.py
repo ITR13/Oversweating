@@ -35,6 +35,38 @@ def station_info(station_id):
 	
 	return jsonify(ship.stations[station_id].as_dict())
 
+@app.route('/activate/<int:station_id>', methods=['GET', 'POST'])
+def activate_component(station_id):
+	if ship is None:
+		return "Ship is stopped"
+	if station_id < 0 or station_id >= len(ship.stations):
+		return "Station doesn't exist"
+		
+	station = ship.stations[station_id]
+	success, data = parse_form({'component_index': int, 'button_index': int})
+	if not success:
+		return data
+
+	component_index = data["component_index"]
+	button_index = data["button_index"]
+	
+	if component_index < 0 or component_index >= len(station.components):
+		return "Component doesn't exist"
+	
+	station.activate(component_index, button_index)
+	return "Success"
+
+
+@app.route('/debug/<int:station_id>/generate_targets/<int:faults>')
+def debug_generate_targets(station_id, faults):
+	if ship is None:
+		return {}
+	if station_id < 0 or station_id >= len(ship.stations):
+		return {}
+	
+	station = ship.stations[station_id]
+	return jsonify(station.generate_target(faults))
+
 
 if __name__ == '__main__':
 	app.run(
