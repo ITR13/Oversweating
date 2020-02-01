@@ -51,8 +51,9 @@ station = (
 warning = (
 	"Warning",
 	[
-		f"Warning_{color}.png"
+		f"Warning_{state}.png"
 		for color in colors
+		for state in ["Off", color]
 	]
 )
 

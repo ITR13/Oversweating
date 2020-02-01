@@ -17,6 +17,36 @@ TextureImporter:
   - first:
       213: 8492940067480317871
     second: WarningSheet_4
+  - first:
+      213: 2671308655709334757
+    second: WarningSheet_0
+  - first:
+      213: -4491913068752745241
+    second: WarningSheet_1
+  - first:
+      213: -5795301163334325760
+    second: WarningSheet_2
+  - first:
+      213: -5281078179314349361
+    second: WarningSheet_3
+  - first:
+      213: 1018106381049701333
+    second: WarningSheet_4
+  - first:
+      213: -7217323580381319410
+    second: WarningSheet_5
+  - first:
+      213: -1053281476236293470
+    second: WarningSheet_6
+  - first:
+      213: -1573206749763247589
+    second: WarningSheet_7
+  - first:
+      213: 4910234129616684240
+    second: WarningSheet_8
+  - first:
+      213: 471285454017736821
+    second: WarningSheet_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -105,6 +135,111 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 600
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec2bf4b115621520800000000000000
+      internalID: 2671308655709334757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningSheet_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ecce07fcd489a1c0800000000000000
+      internalID: -4491913068752745241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00aac09fb44f29fa0800000000000000
+      internalID: -5795301163334325760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcac6e25067d5b6b0800000000000000
+      internalID: -5281078179314349361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 600
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d3a6020c5a012e00800000000000000
+      internalID: 1018106381049701333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WarningSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 600
         height: 600
@@ -115,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 450cf19f97498cae0800000000000000
-      internalID: -1528808821900722092
+      spriteID: e0f2252517ae6db90800000000000000
+      internalID: -7217323580381319410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WarningSheet_1
+      name: WarningSheet_6
       rect:
         serializedVersion: 2
         x: 600
@@ -136,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ace1ba298b0835080800000000000000
-      internalID: -9199868083564765494
+      spriteID: 2aacf60f31ef161f0800000000000000
+      internalID: -1053281476236293470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WarningSheet_2
+      name: WarningSheet_7
       rect:
         serializedVersion: 2
         x: 1200
@@ -157,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 749f3c5dbd367de50800000000000000
-      internalID: 6834040755393395015
+      spriteID: b126d1adbc8da2ae0800000000000000
+      internalID: -1573206749763247589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WarningSheet_3
+      name: WarningSheet_8
       rect:
         serializedVersion: 2
         x: 1800
@@ -178,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fc6bdabfec3ddcd0800000000000000
-      internalID: -2531800415182557961
+      spriteID: 0d44dc3ece7a42440800000000000000
+      internalID: 4910234129616684240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WarningSheet_4
+      name: WarningSheet_9
       rect:
         serializedVersion: 2
         x: 2400
@@ -199,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fafa8dc6efbfcd570800000000000000
-      internalID: 8492940067480317871
+      spriteID: 570398a9f975a8600800000000000000
+      internalID: 471285454017736821
       vertices: []
       indices: 
       edges: []

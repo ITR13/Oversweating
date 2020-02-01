@@ -8,6 +8,7 @@ public class UiStation : MonoBehaviour
     [SerializeField]
     private Image componentBackground, alarmBackground;
 
+    [SerializeField] private UiComponent warningSign = null;
     [SerializeField] private UiComponent[] uiComponents = new UiComponent[0];
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
@@ -15,6 +16,13 @@ public class UiStation : MonoBehaviour
         var pallette = Constants.Pallettes[stationInfo.color];
         // componentBackground.color = pallette.BackgroundColor;
         // alarmBackground.color = pallette.BackgroundColor;
+
+        warningSign.color = pallette.Index;
+        warningSign.state =
+            stationInfo.status ==
+            Constants.StatusStrings[StationStatus.Warning]
+                ? 1
+                : 0;
 
         for (var i = 0; i < uiComponents.Length; i++)
         {
@@ -24,6 +32,7 @@ public class UiStation : MonoBehaviour
                 i < stationInfo.components.Length
                     ? stationInfo.components[i]
                     : 0;
+
             if(onClick!=null)
             {
                 uiComponents[i].onClick = (button) =>
