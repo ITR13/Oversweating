@@ -170,12 +170,31 @@ class Station:
 		)
 
 	def as_dict(self):
+		faults = [
+			{
+				"station_id": fault[0],
+				"chunks": [
+					{
+						"targets": [
+							{
+								"component_id": target[0],
+								"target_value": target[1],
+							}
+							for target in chunk
+						]
+					}
+					for chunk in fault[1]
+				],
+			}
+			for fault in self.faults
+		] if self.faults is not None else None
+	
 		return {
 			"status": self.status,
 			"color": self.color,
 			"preset_index": self.preset_index,
 			"components": self.components,
-			"faults": self.faults,
+			"faults": faults,
 		}
 
 

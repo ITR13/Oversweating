@@ -1,4 +1,6 @@
-﻿public static class Constants
+﻿using System.Collections.Generic;
+
+public static class Constants
 {
     public const int LeverMax = 3;
 
@@ -6,9 +8,19 @@
     {
         new[] { Component.Button, Component.Button, Component.Button, Component.Switch, Component.Lever, Component.Lever, Component.Compass },
     };
+
+    public static Dictionary<StationStatus, string> StatusStrings =
+        new Dictionary<StationStatus, string>
+        {
+            {StationStatus.Stopped, "stopped"},
+            {StationStatus.Disabled, "disabled"},
+            {StationStatus.Running, "running"},
+            {StationStatus.Warning, "warning"},
+            {StationStatus.Failed, "failed"},
+        };
 }
 
-public enum Playstate
+public enum StationStatus
 {
     Stopped,
     Disabled,

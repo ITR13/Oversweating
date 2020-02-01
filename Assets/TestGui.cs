@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 class TestGui : MonoBehaviour
@@ -14,10 +15,9 @@ class TestGui : MonoBehaviour
         }
     }
 
-
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(20, 20, 200, 50));
+        GUILayout.BeginArea(new Rect(20, 20, 200, 20));
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Setup"))
         {
@@ -37,7 +37,7 @@ class TestGui : MonoBehaviour
         for (var i = 0; i < infos.Length; i++)
         {
             var width = 150;
-            GUILayout.BeginArea(new Rect(20 + (width + 5) * i, 80, width, 400));
+            GUILayout.BeginArea(new Rect(20 + (width + 5) * i, 45, width, 400));
             DisplayTerminal(i);
             GUILayout.EndArea();
         }
@@ -54,8 +54,13 @@ class TestGui : MonoBehaviour
         GUILayout.Label("Preset: " + info.preset_index);
         GUILayout.Label("Status: " + info.status);
 
+        if (info.components == null)
+        {
+            return;
+        }
+
         GUILayout.Space(1);
-        GUILayout.Label("Components");
+        GUILayout.Label("<b>Components</b>");
         for (var i = 0; i < info.components.Length; i++)
         {
             var buttonCount = preset[i] == Component.Lever ? 3 : 1;
@@ -73,7 +78,51 @@ class TestGui : MonoBehaviour
             GUILayout.EndHorizontal();
         }
 
-        //public Tuple<int, int[][]>[] faults;
+        if (info.status != Constants.StatusStrings[StationStatus.Warning])
+        {
+            return;
+        }
+
+        GUILayout.Space(1);
+        GUILayout.Label("<b>Warning</b>");
+
+        if (info.faults == null) return;
+
+        foreach (var faultList in info.faults)
+        {
+            var otherStationIndex = faultList.station_id;
+            var chunks = faultList.chunks;
+
+            var otherStation = infos[otherStationIndex];
+            var otherPreset =
+                Constants.Presets[infos[otherStationIndex].preset_index];
+
+            GUILayout.Label(otherStation.color);
+
+            if (chunks == null)
+            {
+                GUILayout.Label("Error, chunk is null");
+                continue;
+            };
+
+            foreach (var chunk in chunks)
+            {
+                if (chunk.targets == null)
+                {
+                    GUILayout.Label("Error, targets is null");
+                    continue;
+                }
+
+                GUILayout.BeginHorizontal();
+                var chunkType = otherPreset[chunk.targets[0].component_id];
+                GUILayout.Label(chunkType.ToString());
+                foreach (var goal in chunk.targets)
+                {
+                    GUILayout.Label(goal.target_value.ToString());
+                }
+                GUILayout.EndHorizontal();
+            }
+        }
     }
 
 
@@ -88,8 +137,19 @@ class TestGui : MonoBehaviour
             }
 
             var json = request.downloadHandler.text;
-            var info = JsonUtility.FromJson<StationInfo>(json);
-            infos[stationIndex] = info;
+            try
+            {
+                var info = JsonUtility.FromJson<StationInfo>(json);
+                infos[stationIndex] = info;
+            }
+            catch (ArgumentException ae)
+            {
+                Debug.Log(json);
+                Debug.LogException(ae);
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

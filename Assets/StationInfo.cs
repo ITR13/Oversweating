@@ -9,7 +9,7 @@ public class StationInfo
 {
     public string color;
     public int[] components;
-    public Tuple<int, int[][]>[] faults;
+    public FaultList[] faults;
     public int preset_index;
     public string status;
 
@@ -17,4 +17,24 @@ public class StationInfo
     {
         return $"[{color}] Status is {status}.";
     }
+}
+
+[Serializable]
+public class FaultList
+{
+    public int station_id;
+    public TargetChunk[] chunks;
+}
+
+[Serializable]
+public class TargetChunk
+{
+    public Target[] targets;
+}
+
+[Serializable]
+public class Target
+{
+    public int component_id;
+    public int target_value;
 }
