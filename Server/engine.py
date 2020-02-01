@@ -1,6 +1,8 @@
 from threading import Thread
 from constants import *
 import random
+from time import sleep, time
+
 
 class Gameloop(Thread):
 	daemon = True
@@ -10,9 +12,56 @@ class Gameloop(Thread):
 		super(Gameloop,self).__init__(*args, **kwargs)
 		self.ship = ship
 
+		self.wave_timer = 5
+
+		self.waves = WAVES
+		self.current_wave = self.next_wave()
+		
+		self.safe_stations = ship.station_count
+
+
 	def run(self):
+		prev_time = time()
 		while not self.lost:
-			pass
+			sleep(0)
+			current_time = time()
+			delta_time = current_time - prev_time
+			prev_time = current_time
+			
+			self.check_next_wave(delta_time)
+			# self.check_faults_cleared()
+			# self.check_faults_lost()
+			
+	
+	def check_next_wave(self, dt):
+		faults = self.current_wave["faults"]
+		# print(len(faults), self.safe_stations, self.wave_timer)
+		if len(faults) > self.safe_stations:
+			return
+		
+		self.wave_timer -= dt
+		if self.wave_timer > 0:
+			return
+		
+		self.wave_timer +=  self.current_wave["delay"] * (0.8 ** (self.ship.player_count - 1))
+		self.current_wave = self.next_wave()
+		self.ship.create_faults(faults)
+		
+		self.recalc_safe_stations()
+	
+	def next_wave(self):
+		if len(self.waves) == 0:
+			return self.waves[0]
+		wave = self.waves[0]
+		self.waves = self.waves[1:]
+		return wave
+		
+	def recalc_safe_stations(self):
+		self.safe_stations = 0
+		for station in self.ship.stations:
+			if station.status == RUNNING:
+				self.safe_stations += 1
+		
 		
 
 class Station:
@@ -87,6 +136,12 @@ class Ship:
 		
 		self.thread = Gameloop(self)
 		self.thread.start()
+		
+	def create_faults(self, fault_list):
+		selected_stations = random.sample(self.stations, len(fault_list))
+		for faults, station in zip(fault_list, selected_stations):
+			target = station.generate_target(faults)
+			print(fault_list)
 
 	def stop(self):
 		self.thread.stop()

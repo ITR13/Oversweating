@@ -34,3 +34,59 @@ PRESETS = [
 ]
 
 
+
+WAVES = [
+	{ "delay": 15, "faults": [1] },
+	{ "delay": 15, "faults": [1] },
+	{ "delay": 15, "faults": [2] },
+	{ "delay": 15, "faults": [1] },
+	{ "delay": 20, "faults": [3] },
+	
+	{ "delay": 13, "faults": [1] },
+	{ "delay": 13, "faults": [1] },
+	{ "delay": 13, "faults": [1, 2] },
+	{ "delay":  5, "faults": [2] },
+	{ "delay":  5, "faults": [2] },
+	{ "delay": 13, "faults": [1] },
+	
+	{ "delay": 10, "faults": [2] },
+	{ "delay": 10, "faults": [1, 1] },
+	{ "delay": 10, "faults": [3] },
+	{ "delay": 10, "faults": [2] },
+	{ "delay": 15, "faults": [4] },
+	
+	{ "delay":  8, "faults": [2] },
+	{ "delay":  8, "faults": [1, 1, 1] },
+	{ "delay":  8, "faults": [2] },
+	{ "delay": 13, "faults": [2, 2] },
+	{ "delay": 15, "faults": [2, 2, 1] },
+	
+	{ "delay":  6, "faults": [1, 1] },
+	{ "delay":  6, "faults": [1, 1] },
+	{ "delay":  6, "faults": [2, 1] },
+	{ "delay":  6, "faults": [2, 1] },
+	{ "delay":  6, "faults": [2, 2] },
+	{ "delay":  6, "faults": [2, 2] },
+	{ "delay":  6, "faults": [3, 2] },
+	{ "delay": 15, "faults": [3, 2] },
+	
+	{ "delay":  5, "faults": [1] },
+	{ "delay":  5, "faults": [3, 2, 1] },
+	{ "delay":  5, "faults": [2, 2] },
+	{ "delay":  5, "faults": [2, 2, 2] },
+	{ "delay":  5, "faults": [3, 2, 2] },
+	
+	{ "delay":  5, "faults": [3, 2, 2] },
+	{ "delay":  5, "faults": [3, 3, 1] },
+	{ "delay":  5, "faults": [3, 3, 2] },
+	{ "delay":  5, "faults": [3, 3, 2] },
+	{ "delay":  5, "faults": [4, 4, 2] },
+	{ "delay":  5, "faults": [4, 4, 3] },
+	{ "delay":  5, "faults": [4, 4, 4] },
+	
+	{ "delay":  3, "faults": [4, 4, 4] },
+	{ "delay":  3, "faults": [4, 4, 4] },
+	{ "delay":  3, "faults": [4, 4, 4] },
+]
+
+
