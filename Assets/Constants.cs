@@ -8,6 +8,7 @@ public static class Constants
     public static readonly Component[][] Presets = new[]
     {
         new[] { Component.Button, Component.Button, Component.Button, Component.Switch, Component.Lever, Component.Lever, Component.Compass },
+        new[] { Component.Button, Component.Button, Component.Compass, Component.Compass, Component.Compass },
     };
 
     public static Dictionary<StationStatus, string> StatusStrings =
