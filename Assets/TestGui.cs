@@ -36,7 +36,8 @@ class TestGui : MonoBehaviour
 
         for (var i = 0; i < infos.Length; i++)
         {
-            GUILayout.BeginArea(new Rect(20 + 100 * i, 80, 100, 300));
+            var width = 150;
+            GUILayout.BeginArea(new Rect(20 + (width + 5) * i, 80, width, 400));
             DisplayTerminal(i);
             GUILayout.EndArea();
         }
@@ -47,14 +48,32 @@ class TestGui : MonoBehaviour
     {
         var info = infos[stationIndex];
         if (info == null) return;
+        var preset = Constants.Presets[info.preset_index];
+
         GUILayout.Label("Color: " + info.color);
         GUILayout.Label("Preset: " + info.preset_index);
         GUILayout.Label("Status: " + info.status);
 
+        GUILayout.Space(1);
+        GUILayout.Label("Components");
+        for (var i = 0; i < info.components.Length; i++)
+        {
+            var buttonCount = preset[i] == Component.Lever ? 3 : 1;
 
-        //public int[] components;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(preset[i].ToString());
+
+            for (var j = 0; j < buttonCount; j++)
+            {
+                if (GUILayout.Button(info.components[i].ToString()))
+                {
+                    NetworkManager.Instance.Activate(stationIndex, i, j);
+                }
+            }
+            GUILayout.EndHorizontal();
+        }
+
         //public Tuple<int, int[][]>[] faults;
-
     }
 
 
