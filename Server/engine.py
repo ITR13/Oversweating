@@ -5,12 +5,13 @@ from time import sleep, time
 
 
 class Gameloop(Thread):
-	daemon = True
 	lost = False
 	stopped = False
 
 	def __init__(self, ship, *args, **kwargs):
 		super(Gameloop,self).__init__(*args, **kwargs)
+		self.daemon = True
+		
 		self.ship = ship
 
 		self.wave_timer = 5
@@ -24,22 +25,22 @@ class Gameloop(Thread):
 	def run(self):
 		prev_time = time()
 		while not self.lost and not self.stopped:
-			sleep(0)
+			sleep(1)
 			current_time = time()
 			delta_time = current_time - prev_time
 			prev_time = current_time
 
 			self.check_next_wave(delta_time)
-			# self.check_faults_cleared()
+			self.check_faults_cleared()
 			# self.check_faults_lost()
-			
+
 		if self.stopped:
 			return
 
 
 	def check_next_wave(self, dt):
 		faults = self.current_wave["faults"]
-		if self.safe_stations > 0:
+		if self.safe_stations == 0:
 			return
 
 		self.wave_timer -= dt
@@ -59,12 +60,29 @@ class Gameloop(Thread):
 		self.waves = self.waves[1:]
 		return wave
 
+	def check_faults_cleared(self):
+		for station in self.ship.stations:
+			station_faults = station.faults
+			if station_faults is None:
+				continue
+
+			for other_station_index, faults in station_faults:
+				other_station = self.ship.stations[other_station_index]
+				faults = [
+					component_fault
+					for chunk_faults in faults
+					for component_fault in chunk_faults
+				]
+				if not other_station.has_state(faults):
+					break
+			else:
+				station.clear_faults()
+
 	def recalc_safe_stations(self):
 		self.safe_stations = 0
 		for station in self.ship.stations:
 			if station.status == RUNNING:
 				self.safe_stations += 1
-
 
 
 class Station:
@@ -123,6 +141,18 @@ class Station:
 	def set_faults(self, faults):
 		self.status = WARNING
 		self.faults = faults
+		print(f"Warning on {self.index}")
+
+	def clear_faults(self):
+		self.status = RUNNING
+		self.faults = None
+		print(f"Cleared {self.index}")
+
+	def has_state(self, component_states):
+		return all(
+			self.components[component_index] == value
+			for component_index, value in component_states
+		)
 
 	def as_dict(self):
 		return {
@@ -161,19 +191,18 @@ class Ship:
 			in self.stations
 			if station != selected_station
 		]
-		
+
 		selected_stations = random.sample(
 			other_stations,
 			len(fault_list)
 		)
-		faults = [
+		station_faults = [
 			(station.index, station.generate_target(faults))
 			for faults, station
 			in zip(fault_list, selected_stations)
 		]
-		selected_station.set_faults(faults)
-		print(f"Warning on {selected_station.index}")
-		
+		selected_station.set_faults(station_faults)
+
 
 	def stop(self):
 		self.thread.stopped = True
