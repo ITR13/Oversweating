@@ -33,9 +33,21 @@ PRESETS = [
 	},
 	{
 		"components": ["button", "button", "compass", "compass", "compass"],
-		"chunks": [ (0, 1), (3, 4, 5), ],
+		"chunks": [ (0, 1), (2, 3, 4), ],
 	},
 ]
+
+for _preset in PRESETS:
+	for _chunk in _preset["chunks"]:
+		_components = _preset["components"]
+		_current_type = None
+		for _component_index in _chunk:
+			if _component_index < 0 or _component_index >= len(_components):
+				print(f"Component needs to be 0 <= {_component_index} < {len(_components)} (in {_preset})")
+			elif _current_type is None:
+				_current_type = _components[_component_index]
+			elif _current_type != _components[_component_index]:
+				print(f"{_component_index} is not {_current_type}, but {_components[_component_index]} (in {_preset})")
 
 
 
