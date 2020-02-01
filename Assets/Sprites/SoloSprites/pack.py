@@ -1,40 +1,42 @@
 from PIL import Image
 
-color_count = 5
+colors = ["Pink", "Yellow", "Red", "Blue", "Purple"]
+color_count = len(colors)
 
 button = (
 	"Button",
 	[
-		f"Button_{color}.png"
-		for color
-		in ["Gray", "Red"] * color_count
+		f"Button_{state}.png"
+		for color in colors
+		for state in ["Off", color]
 	]
 )
 
 compass = (
 	"Compass",
 	[
-		f"Compass_{direction}.png"
-		for direction
-		in ["North", "East", "South", "West"] * color_count
+		f"Compass_{direction}_{color}.png"
+		for color in colors
+		for direction in ["North", "East", "South", "West"]
 	]
 )
 
 lever = (
 	"Lever",
 	[
-		f"Lever{pos}.png"
-		for pos
-		in ["", "_Up", "_Down"] * color_count
+		f"Lever{pos}_{color}.png"
+		for color in colors
+		for pos in ["", "_Up", "_Down"]
 	]
 )
 
 switch = (
 	"Switch",
 	[
-		f"Switch_{state}.png"
+		f"Switch_{state}_{color}.png"
+		for color in colors
 		for state
-		in ["Off", "On"] * color_count
+		in ["Off", "On"]
 	]
 )
 
