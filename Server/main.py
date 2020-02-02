@@ -9,6 +9,20 @@ app = Flask(__name__)
 ship = None
 
 
+@app.route('/status')
+def global_status():
+	if ship is None or len(ship.stations) == 0:
+		return jsonify({"status": STOPPED, "station_count": 0, "player_count": 0, "colors": []})
+	
+	station = ship.stations[0]
+	return jsonify({
+		"status": station.status, 
+		"station_count": ship.station_count,
+		"player_count": ship.player_count,
+		"colors": [station.color for station in ship.stations],
+	})
+
+
 @app.route('/setup', methods=['GET', 'POST'])
 def setup_game():
 	global ship
@@ -21,6 +35,7 @@ def setup_game():
 	
 	ship = Ship(data["station_count"], data["player_count"])
 	return "Success"
+
 
 @app.route('/stop')
 def stop_game():

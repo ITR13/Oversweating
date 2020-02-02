@@ -18,6 +18,13 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
+    public NetCall Status()
+    {
+        var request = UnityWebRequest.Get($"{Url}status");
+        var asyncOperation = request.SendWebRequest();
+        return new NetCall(request, asyncOperation);
+    }
+
     public NetCall Setup(int stationCount, int playerCount)
     {
         var form = new WWWForm();

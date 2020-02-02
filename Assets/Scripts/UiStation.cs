@@ -28,8 +28,18 @@ public class UiStation : MonoBehaviour
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick, Action ready)
     {
+        if (stationInfo == null)
+        {
+            popupScript.Open(
+                "SERVER OFFLINE",
+                new Color(0.23f, 0.23f, 0.23f),
+                () => SceneManager.LoadScene(0)
+            );
+            return;
+        }
+        
+
         var warn = false;
-        var fail = false;
         _targetVolume = 0;
         switch (Constants.StationStatuses[stationInfo.status])
         {

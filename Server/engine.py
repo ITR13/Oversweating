@@ -55,7 +55,7 @@ class Gameloop(Thread):
 		if self.wave_timer > 0:
 			return
 
-		self.wave_timer +=  self.current_wave["delay"] * (0.8 ** (self.ship.player_count - 1))
+		self.wave_timer +=  self.current_wave["delay"]
 		self.current_wave = self.next_wave()
 		self.ship.create_faults(faults)
 

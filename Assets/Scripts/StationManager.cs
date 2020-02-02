@@ -61,6 +61,13 @@ public class StationManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+
+
         if (!NetworkManager.InstanceSet) return;
 
         if (_currentOperation != null)
