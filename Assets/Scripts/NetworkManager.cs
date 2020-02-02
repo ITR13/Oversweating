@@ -1,10 +1,24 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using UnityEngine.Networking;
 using NetCall = System.Tuple<UnityEngine.Networking.UnityWebRequest, UnityEngine.Networking.UnityWebRequestAsyncOperation>;
 
 public class NetworkManager : MonoBehaviour
 {
-    private const string Url = "http://192.168.137.1:5000/";
+    private static readonly string Url = "http://192.168.137.1:5000/";
+
+    static NetworkManager()
+    {
+        var path = Path.Combine(
+            Application.streamingAssetsPath,
+            "connection.txt"
+        );
+        if (!File.Exists(path)) return;
+
+        Url = File.ReadAllText(path);
+        Debug.Log($"Loaded base url {Url}");
+    }
+
 
     public static NetworkManager Instance { get; private set; }
     public static bool InstanceSet { get; private set; }
