@@ -101,6 +101,14 @@ class TestGui : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
+        if (Constants.StationStatuses[info.status] == StationStatus.Waiting)
+        {
+            if (GUILayout.Button("Ready"))
+            {
+                NetworkManager.Instance.Ready(stationIndex);
+            }
+        }
+
         GUILayout.Label("Color: " + info.color);
         GUILayout.Label("Preset: " + info.preset_index);
         GUILayout.Label("Status: " + info.status);

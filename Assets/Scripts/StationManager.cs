@@ -138,13 +138,21 @@ public class StationManager : MonoBehaviour
 
     private void UpdateActiveStation()
     {
+        var readiedOnce = false;
+
         _activeUiStation.UpdateInfo(
             _myStationInfo,
             (componentIndex, button) => NetworkManager.Instance.Activate(
                 StationId,
                 componentIndex,
                 button
-            )
+            ),
+            () =>
+            {
+                if (readiedOnce) return;
+                readiedOnce = true;
+                NetworkManager.Instance.Ready(StationId);
+            }
         );
     }
 

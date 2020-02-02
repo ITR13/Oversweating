@@ -26,10 +26,11 @@ public class UiStation : MonoBehaviour
 
     private float _targetVolume = 0;
 
-    public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
+    public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick, Action ready)
     {
         var warn = false;
         var fail = false;
+        _targetVolume = 0;
         switch (Constants.StationStatuses[stationInfo.status])
         {
             case StationStatus.Stopped:
@@ -39,14 +40,25 @@ public class UiStation : MonoBehaviour
                 warn = true;
                 break;
             case StationStatus.Failed:
-                _targetVolume = 0;
                 popupScript.Open(
                     "FAILURE",
                     Color.red,
                     () => SceneManager.LoadScene(0)
                 );
                 return;
+            case StationStatus.Waiting:
+                popupScript.Open(
+                    "WAITING",
+                    new Color(0.96f, 0.96f, 0.86f),
+                    ready
+                );
+                return;
+            case StationStatus.Ready:
+                popupScript.Open("READY", Color.green);
+                return;
         }
+
+        popupScript.Close();
 
         var pallette = Constants.Pallettes[stationInfo.color];
 

@@ -20,6 +20,8 @@ public static class Constants
             {"running", StationStatus.Running},
             {"warning", StationStatus.Warning},
             {"failed", StationStatus.Failed},
+            {"waiting", StationStatus.Waiting},
+            {"ready", StationStatus.Ready},
         };
     
     public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0);
@@ -78,6 +80,8 @@ public enum StationStatus
     Running,
     Warning,
     Failed,
+    Waiting,
+    Ready,
 }
 
 public enum Component

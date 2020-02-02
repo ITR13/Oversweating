@@ -9,6 +9,9 @@ DISABLED = "disabled"
 RUNNING = "running"
 WARNING = "warning"
 FAILED = "failed"
+WAITING = "waiting"
+READY = "ready"
+
 
 LEVER_MAX = 3
 

@@ -11,7 +11,7 @@ class Gameloop(Thread):
 	def __init__(self, ship, *args, **kwargs):
 		super(Gameloop,self).__init__(*args, **kwargs)
 		self.daemon = True
-		
+
 		self.ship = ship
 
 		self.wave_timer = 5
@@ -23,9 +23,15 @@ class Gameloop(Thread):
 
 
 	def run(self):
+		while any(station.status == WAITING for station in self.ship.stations):
+			sleep(0)
+
+		for station in self.ship.stations:
+			station.status = RUNNING
+
 		prev_time = time()
 		while not self.lost and not self.stopped:
-			sleep(1)
+			sleep(0)
 			current_time = time()
 			delta_time = current_time - prev_time
 			prev_time = current_time
@@ -36,7 +42,7 @@ class Gameloop(Thread):
 
 		if self.stopped:
 			return
-			
+
 		print("Game lost")
 
 
@@ -80,7 +86,7 @@ class Gameloop(Thread):
 			else:
 				station.clear_faults()
 				self.recalc_safe_stations()
-		
+
 	def check_faults_lost(self, current_time):
 		for station in self.ship.stations:
 			if station.end_time is None:
@@ -102,7 +108,7 @@ class Station:
 		self.ship = ship
 		self.index = index
 		self.color = COLORS[index]
-		self.status = RUNNING
+		self.status = WAITING
 		self.preset_index = preset_index
 		self.component_names = PRESETS[preset_index]["components"]
 		self.chunks = PRESETS[preset_index]["chunks"]
@@ -111,6 +117,7 @@ class Station:
 		self.faults = None
 		self.end_time = None
 		self.fault_id = -1
+
 
 	def activate(self, component_index, button_index):
 		component = self.component_names[component_index]
@@ -172,6 +179,12 @@ class Station:
 			for component_index, value in component_states
 		)
 
+	def ready(self):
+		if self.status == WAITING:
+			self.status = READY
+			return True
+		return False
+
 	def as_dict(self):
 		faults = [
 			{
@@ -192,7 +205,7 @@ class Station:
 			}
 			for fault in self.faults
 		] if self.faults is not None else None
-	
+
 		return {
 			"status": self.status,
 			"color": self.color,

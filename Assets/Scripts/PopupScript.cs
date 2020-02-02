@@ -8,7 +8,7 @@ public class PopupScript : MonoBehaviour
     [SerializeField] private Image background;
     private Action _onClicked;
 
-    public void Open(string content, Color color, Action action)
+    public void Open(string content, Color color, Action action=null)
     {
         text.text = content;
         background.color = color;

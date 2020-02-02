@@ -52,4 +52,10 @@ public class NetworkManager : MonoBehaviour
         var asyncOperation = request.SendWebRequest();
         return new NetCall(request, asyncOperation);
     }
+    public NetCall Ready(int station)
+    {
+        var request = UnityWebRequest.Get($"{Url}ready/{station}");
+        var asyncOperation = request.SendWebRequest();
+        return new NetCall(request, asyncOperation);
+    }
 }

@@ -63,6 +63,19 @@ def activate_component(station_id):
 	return "Success"
 
 
+@app.route('/ready/<int:station_id>')
+def ready_system(station_id):
+	if ship is None:
+		return "Ship is stopped"
+	if station_id < 0 or station_id >= len(ship.stations):
+		return "Station doesn't exist"
+		
+	station = ship.stations[station_id]
+	if station.ready():
+		return "Success"
+	return "Station not waiting"
+
+
 @app.route('/debug/<int:station_id>/generate_targets/<int:faults>')
 def debug_generate_targets(station_id, faults):
 	if ship is None:
