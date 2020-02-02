@@ -8,10 +8,16 @@ public class PopupScript : MonoBehaviour
     [SerializeField] private Image background;
     private Action _onClicked;
 
-    public void Open(string content, Color color, Action action=null)
+    public void Open(
+        string content,
+        Color backgroundColor,
+        Color textColor,
+        Action action = null
+    )
     {
         text.text = content;
-        background.color = color;
+        text.color = textColor;
+        background.color = backgroundColor;
         _onClicked = action;
 
         gameObject.SetActive(true);

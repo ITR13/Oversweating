@@ -27,6 +27,10 @@ public static class Constants
     
     public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0);
 
+    public static readonly Color Gray = new Color(0.23f, 0.23f, 0.23f);
+    public static readonly Color Red = new Color(0.93f, 0.31f, 0.33f);
+    public static readonly Color Green = new Color(0.06f, 0.67f, 0.52f);
+    public static readonly Color Black = new Color(0.13f, 0.18f, 0.24f);
 
     public static int ColorCount => Pallettes.Count;
 

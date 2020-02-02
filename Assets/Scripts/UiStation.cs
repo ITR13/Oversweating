@@ -32,7 +32,8 @@ public class UiStation : MonoBehaviour
         {
             popupScript.Open(
                 "SERVER OFFLINE",
-                new Color(0.23f, 0.23f, 0.23f),
+                Constants.Gray,
+                Color.white,
                 () => SceneManager.LoadScene(0)
             );
             return;
@@ -52,19 +53,21 @@ public class UiStation : MonoBehaviour
             case StationStatus.Failed:
                 popupScript.Open(
                     "FAILURE",
-                    Color.red,
+                    Constants.Red,
+                    Constants.Black,
                     () => SceneManager.LoadScene(0)
                 );
                 return;
             case StationStatus.Waiting:
                 popupScript.Open(
                     "WAITING",
-                    new Color(0.96f, 0.96f, 0.86f),
+                    Constants.Gray,
+                    Color.white,
                     ready
                 );
                 return;
             case StationStatus.Ready:
-                popupScript.Open("READY", Color.green);
+                popupScript.Open("READY", Constants.Green, Constants.Black);
                 return;
         }
 
