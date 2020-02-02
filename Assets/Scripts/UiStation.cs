@@ -10,6 +10,8 @@ public class UiStation : MonoBehaviour
     [SerializeField]
     private Image[] backgrounds;
 
+    [SerializeField] private PopupScript popupScript;
+
     [SerializeField] private UiComponent warningSign = null;
     [SerializeField] private UiComponent[] uiComponents = new UiComponent[0];
 
@@ -26,25 +28,37 @@ public class UiStation : MonoBehaviour
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
     {
-        if (
-            stationInfo.status ==
-            Constants.StatusStrings[StationStatus.Stopped]
-        )
+        var warn = false;
+        var fail = false;
+        switch (Constants.StationStatuses[stationInfo.status])
         {
-            return;
+            case StationStatus.Stopped:
+            case StationStatus.Disabled:
+                return;
+            case StationStatus.Warning:
+                warn = true;
+                break;
+            case StationStatus.Failed:
+                _targetVolume = 0;
+                popupScript.Open(
+                    "FAILURE",
+                    Color.red,
+                    () => SceneManager.LoadScene(0)
+                );
+                return;
         }
 
         var pallette = Constants.Pallettes[stationInfo.color];
 
         /*
-        foreach (var background in backgrounds)
+        if (warn)
         {
-            background.color = pallette.BackgroundColor;
+            foreach (var background in backgrounds)
+            {
+                background.color = pallette.BackgroundColor;
+            }
         }
         */
-
-        var warn = stationInfo.status ==
-                   Constants.StatusStrings[StationStatus.Warning];
 
         _targetVolume = warn ? 1 : 0;
 
@@ -69,6 +83,7 @@ public class UiStation : MonoBehaviour
 
         if (!warn)
         {
+            prevFaultÌd = stationInfo.fault_id;
             DeleteTasks();
             return;
         }

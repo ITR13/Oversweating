@@ -129,7 +129,7 @@ class TestGui : MonoBehaviour
             GUILayout.EndHorizontal();
         }
 
-        if (info.status != Constants.StatusStrings[StationStatus.Warning])
+        if (Constants.StationStatuses[info.status] != StationStatus.Warning)
         {
             return;
         }

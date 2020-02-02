@@ -12,14 +12,14 @@ public static class Constants
         new[] { Component.Button, Component.Button, Component.Compass, Component.Compass, Component.Compass },
     };
 
-    public static Dictionary<StationStatus, string> StatusStrings =
-        new Dictionary<StationStatus, string>
+    public static Dictionary<string, StationStatus> StationStatuses =
+        new Dictionary<string, StationStatus>
         {
-            {StationStatus.Stopped, "stopped"},
-            {StationStatus.Disabled, "disabled"},
-            {StationStatus.Running, "running"},
-            {StationStatus.Warning, "warning"},
-            {StationStatus.Failed, "failed"},
+            {"stopped", StationStatus.Stopped},
+            {"disabled", StationStatus.Disabled},
+            {"running", StationStatus.Running},
+            {"warning", StationStatus.Warning},
+            {"failed", StationStatus.Failed},
         };
     
     public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0);
