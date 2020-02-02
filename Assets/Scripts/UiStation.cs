@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiStation : MonoBehaviour
@@ -15,7 +16,7 @@ public class UiStation : MonoBehaviour
     [SerializeField] private Transform taskParent;
     [SerializeField] private UiTask taskPrefab;
 
-    private int prevFaultCount = -1;
+    private int prevFaultÌd = -1;
     private List<Transform> spawnedTasks = new List<Transform>();
 
     [SerializeField]
@@ -35,6 +36,13 @@ public class UiStation : MonoBehaviour
 
         var warn = stationInfo.status ==
                    Constants.StatusStrings[StationStatus.Warning];
+
+        if (stationInfo.status ==
+            Constants.StatusStrings[StationStatus.Failed])
+        {
+            SceneManager.LoadScene(0);
+        }
+
 
         _targetVolume = warn ? 1 : 0;
 
@@ -63,8 +71,8 @@ public class UiStation : MonoBehaviour
             return;
         }
 
-        if (stationInfo.fault_count == prevFaultCount) return;
-        prevFaultCount = stationInfo.fault_count;
+        if (stationInfo.fault_id == prevFaultÌd) return;
+        prevFaultÌd = stationInfo.fault_id;
 
         DeleteTasks();
         foreach (var faultList in stationInfo.faults)

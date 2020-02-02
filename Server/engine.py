@@ -110,7 +110,7 @@ class Station:
 
 		self.faults = None
 		self.end_time = None
-		self.fault_count = 0
+		self.fault_id = -1
 
 	def activate(self, component_index, button_index):
 		component = self.component_names[component_index]
@@ -157,7 +157,7 @@ class Station:
 		self.status = WARNING
 		self.faults = faults
 		self.end_time = end_time
-		self.fault_count += 1
+		self.fault_id = random.randint(1, 10000000)
 		print(f"Warning on {self.index}, ending at {end_time}")
 
 	def clear_faults(self):
@@ -199,7 +199,7 @@ class Station:
 			"preset_index": self.preset_index,
 			"components": self.components,
 			"faults": faults,
-			"fault_count": self.fault_count,
+			"fault_id": self.fault_id,
 			"end_time": self.end_time if self.end_time is not None else -1.0,
 		}
 

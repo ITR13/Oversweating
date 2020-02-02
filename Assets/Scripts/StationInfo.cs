@@ -12,7 +12,7 @@ public class StationInfo
     public int preset_index;
     public string status;
     public FaultList[] faults;
-    public int fault_count;
+    public int fault_id;
     public double end_time;
 
     public override string ToString()
