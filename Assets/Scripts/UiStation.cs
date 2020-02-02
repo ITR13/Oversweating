@@ -18,6 +18,11 @@ public class UiStation : MonoBehaviour
     private int prevFaultCount = -1;
     private List<Transform> spawnedTasks = new List<Transform>();
 
+    [SerializeField]
+    private AudioSource alarm;
+
+    private float _targetVolume = 0;
+
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
     {
         var pallette = Constants.Pallettes[stationInfo.color];
@@ -30,6 +35,8 @@ public class UiStation : MonoBehaviour
 
         var warn = stationInfo.status ==
                    Constants.StatusStrings[StationStatus.Warning];
+
+        _targetVolume = warn ? 1 : 0;
 
         warningSign.color = pallette.Index;
         warningSign.state = warn ? 1 : 0;
@@ -77,9 +84,37 @@ public class UiStation : MonoBehaviour
     {
         foreach (var task in spawnedTasks)
         {
-            Destroy(task);
+            Destroy(task.gameObject);
         }
 
         spawnedTasks.Clear();
+    }
+
+
+    private void Update()
+    {
+        if (Math.Abs(alarm.volume - _targetVolume) > 0.01)
+        {
+            if (alarm.volume < 0.01)
+            {
+                alarm.Play();
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        alarm.volume = Mathf.MoveTowards(
+            alarm.volume,
+            _targetVolume,
+            Time.deltaTime * 10
+        );
+
+
+        if (_targetVolume < 0.1 && Math.Abs(alarm.volume - _targetVolume) < 0.01)
+        {
+            alarm.Stop();
+        }
     }
 }
