@@ -31,12 +31,24 @@ COMPONENT_MODIFIERS = {
 
 PRESETS = [
 	{
-		"components": ["button", "button", "button", "switch", "lever", "lever", "compass"],
+		"components": ["button"] * 3+ ["switch"] + ["lever"] * 2 + ["compass"],
 		"chunks": [ (0, 1, 2), (3,), (4, 5), (6,) ],
 	},
 	{
-		"components": ["button", "button", "compass", "compass", "compass"],
-		"chunks": [ (0, 1), (2, 3, 4), ],
+		"components": ["compass"] * 2 + ["button"] * 4 + ["switch"],
+		"chunks": [ (0, 1), (2, 3, 4, 5), (6,) ],
+	},
+	{
+		"components": ["lever"] + ["switch"] * 4 + ["button"] * 2 + ["compass"],
+		"chunks": [ (0, ), (1, 2, 3, 4), (5, 6), (7, ) ],
+	},
+	{
+		"components": ["compass"] * 2 + ["button"] * 4 + ["lever"],
+		"chunks": [ (0, 1), (2, 3, 4, 5), (6,) ],
+	},
+	{
+		"components": ["lever"] * 2 + ["compass"] + ["button"] * 2 + ["switch"] * 2,
+		"chunks": [ (0, 1), (2, ), (3, 4), (5, 6,) ],
 	},
 ]
 
@@ -60,26 +72,26 @@ WAVES = [
 	{ "delay": 15, "faults": [2] },
 	{ "delay": 15, "faults": [1] },
 	{ "delay": 20, "faults": [3] },
-	
+
 	{ "delay": 13, "faults": [1] },
 	{ "delay": 13, "faults": [1] },
 	{ "delay": 13, "faults": [1, 2] },
 	{ "delay":  5, "faults": [2] },
 	{ "delay":  5, "faults": [2] },
 	{ "delay": 13, "faults": [1] },
-	
+
 	{ "delay": 10, "faults": [2] },
 	{ "delay": 10, "faults": [1, 1] },
 	{ "delay": 10, "faults": [3] },
 	{ "delay": 10, "faults": [2] },
 	{ "delay": 15, "faults": [4] },
-	
+
 	{ "delay":  8, "faults": [2] },
 	{ "delay":  8, "faults": [1, 1, 1] },
 	{ "delay":  8, "faults": [2] },
 	{ "delay": 13, "faults": [2, 2] },
 	{ "delay": 15, "faults": [2, 2, 1] },
-	
+
 	{ "delay":  6, "faults": [1, 1] },
 	{ "delay":  6, "faults": [1, 1] },
 	{ "delay":  6, "faults": [2, 1] },
@@ -88,13 +100,13 @@ WAVES = [
 	{ "delay":  6, "faults": [2, 2] },
 	{ "delay":  6, "faults": [3, 2] },
 	{ "delay": 15, "faults": [3, 2] },
-	
+
 	{ "delay":  5, "faults": [1] },
 	{ "delay":  5, "faults": [3, 2, 1] },
 	{ "delay":  5, "faults": [2, 2] },
 	{ "delay":  5, "faults": [2, 2, 2] },
 	{ "delay":  5, "faults": [3, 2, 2] },
-	
+
 	{ "delay":  5, "faults": [3, 2, 2] },
 	{ "delay":  5, "faults": [3, 3, 1] },
 	{ "delay":  5, "faults": [3, 3, 2] },
@@ -102,7 +114,7 @@ WAVES = [
 	{ "delay":  5, "faults": [4, 4, 2] },
 	{ "delay":  5, "faults": [4, 4, 3] },
 	{ "delay":  5, "faults": [4, 4, 4] },
-	
+
 	{ "delay":  3, "faults": [4, 4, 4] },
 	{ "delay":  3, "faults": [4, 4, 4] },
 	{ "delay":  3, "faults": [4, 4, 4] },

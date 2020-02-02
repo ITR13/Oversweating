@@ -222,9 +222,11 @@ class Ship:
 		self.station_count = station_count
 		self.player_count = player_count
 
+		presets = list(range(station_count))
+		random.shuffle(presets)
 		self.stations = [
-			Station(self, i, 0)
-			for i in range(station_count)
+			Station(self, i, preset)
+			for i, preset in enumerate(presets)
 		]
 
 		self.thread = Gameloop(self)

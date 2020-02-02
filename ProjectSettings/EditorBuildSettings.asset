@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/StationManager.unity
     guid: 93e383eda00015b498554a27c84602c6
   - enabled: 1
-    path: Assets/Scenes/Preset1.unity
+    path: Assets/Scenes/Preset0.unity
     guid: d232b95281b7a8549b808665e5818652
+  - enabled: 1
+    path: Assets/Scenes/Preset1.unity
+    guid: 1bea65e806bf5144ba8628c238c2b460
+  - enabled: 1
+    path: Assets/Scenes/Preset2_fix.unity
+    guid: bb7cf40c0d88f5f4e91b93b6a2642ebf
+  - enabled: 1
+    path: Assets/Scenes/Preset3.unity
+    guid: 9bdf18f318954df4894a978801b52354
+  - enabled: 1
+    path: Assets/Scenes/Preset4.unity
+    guid: 09bd755724ce49049bf818bc56b9d711
   m_configObjects: {}
