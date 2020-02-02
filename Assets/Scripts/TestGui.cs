@@ -155,8 +155,13 @@ class TestGui : MonoBehaviour
             var chunks = faultList.chunks;
 
             var otherStation = infos[otherStationIndex];
+            if (otherStation == null)
+            {
+                continue;
+            }
+
             var otherPreset =
-                Constants.Presets[infos[otherStationIndex].preset_index];
+                Constants.Presets[otherStation.preset_index];
 
             GUILayout.Label(otherStation.color);
 

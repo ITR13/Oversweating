@@ -141,7 +141,7 @@ class Station:
 		if faults < 0:
 			return []
 		if faults > len(self.chunks):
-			faults = self.chunks
+			faults = len(self.chunks)
 
 		targets = random.sample(self.chunks, faults)
 		targets.sort()
@@ -233,8 +233,7 @@ class Ship:
 		self.player_count = player_count
 		self.health = FAULT_HEALTH
 
-		presets = list(range(station_count))
-		random.shuffle(presets)
+		presets = random.sample(range(len(PRESETS)), k=station_count)
 		self.stations = [
 			Station(self, i, preset)
 			for i, preset in enumerate(presets)

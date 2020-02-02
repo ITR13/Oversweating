@@ -9,7 +9,7 @@ public static class Constants
         new[] { Component.Button, Component.Button, Component.Button, Component.Switch, Component.Lever, Component.Lever, Component.Compass },
         new[] { Component.Compass, Component.Compass, Component.Button, Component.Button, Component.Button, Component.Button, Component.Switch },
         new[] { Component.Lever, Component.Switch, Component.Switch, Component.Switch, Component.Switch, Component.Button, Component.Button, Component.Compass },
-        new[] { Component.Compass, Component.Compass, Component.Button, Component.Button, Component.Button, Component.Button, Component.Lever },
+        new[] { Component.Button, Component.Button, Component.Button, Component.Button, Component.Button, Component.Button, Component.Lever },
         new[] { Component.Lever, Component.Lever, Component.Compass, Component.Button, Component.Button, Component.Switch, Component.Switch },
     };
 

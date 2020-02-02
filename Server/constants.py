@@ -46,8 +46,8 @@ PRESETS = [
 		"chunks": [ (0, ), (1, 2, 3, 4), (5, 6), (7, ) ],
 	},
 	{
-		"components": ["compass"] * 2 + ["button"] * 4 + ["lever"],
-		"chunks": [ (0, 1), (2, 3, 4, 5), (6,) ],
+		"components": ["button"] * 6 + ["lever"],
+		"chunks": [ (0, 1, 2, 3, 4, 5), (6,) ],
 	},
 	{
 		"components": ["lever"] * 2 + ["compass"] + ["button"] * 2 + ["switch"] * 2,
