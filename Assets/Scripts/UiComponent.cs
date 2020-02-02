@@ -10,6 +10,8 @@ public class UiComponent : MonoBehaviour
 
     [SerializeField] private Texture2D spriteSheet;
     [SerializeField] private Image image;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private bool allowRestart;
 
     private int _state, _color;
     public int state, color;
@@ -61,5 +63,9 @@ public class UiComponent : MonoBehaviour
     public void Activate(int button)
     {
         onClick?.Invoke(button);
+        if (audioSource != null && (!audioSource.isPlaying || allowRestart))
+        {
+            audioSource.Play();
+        }
     }
 }
