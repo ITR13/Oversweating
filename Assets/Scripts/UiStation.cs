@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class UiStation : MonoBehaviour
     [SerializeField] private UiTask taskPrefab;
 
     private int prevFaultCount = -1;
+    private List<Transform> spawnedTasks = new List<Transform>();
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
     {
@@ -48,10 +50,16 @@ public class UiStation : MonoBehaviour
             }
         }
 
-        if (!warn || stationInfo.fault_count == prevFaultCount) return;
+        if (!warn)
+        {
+            DeleteTasks();
+            return;
+        }
+
+        if (stationInfo.fault_count == prevFaultCount) return;
         prevFaultCount = stationInfo.fault_count;
 
-
+        DeleteTasks();
         foreach (var faultList in stationInfo.faults)
         {
             AddTask(faultList);
@@ -62,5 +70,16 @@ public class UiStation : MonoBehaviour
     {
         var child = Instantiate(taskPrefab, taskParent);
         child.Set(faultList);
+        spawnedTasks.Add(child.transform);
+    }
+
+    private void DeleteTasks()
+    {
+        foreach (var task in spawnedTasks)
+        {
+            Destroy(task);
+        }
+
+        spawnedTasks.Clear();
     }
 }

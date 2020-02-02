@@ -110,6 +110,7 @@ class Station:
 
 		self.faults = None
 		self.end_time = None
+		self.fault_count = 0
 
 	def activate(self, component_index, button_index):
 		component = self.component_names[component_index]
@@ -240,7 +241,7 @@ class Ship:
 			for faults, station
 			in zip(fault_list, selected_stations)
 		]
-		selected_station.set_faults(station_faults, time() + 15 * (0.8 ** (self.player_count - 1)))
+		selected_station.set_faults(station_faults, time() + 32)
 
 
 	def stop(self):

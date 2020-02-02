@@ -1,9 +1,9 @@
 ﻿using System;
-using UnityEditor;
-using UnityEngine;
 #if UNITY_EDITOR
-using UnityEngine.SceneManagement;
+using UnityEditor;
 #endif
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StationManager : MonoBehaviour
 {
