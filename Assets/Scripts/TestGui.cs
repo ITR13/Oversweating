@@ -55,7 +55,16 @@ class TestGui : MonoBehaviour
         GUILayout.Label("Players");
         _playerCount = GUILayout.TextField(_playerCount, GUILayout.Width(20));
 
+        GUILayout.Space(20);
+        if (GUILayout.Button("Stop"))
+        {
+            NetworkManager.Instance.Stop();
+        }
+
+
         GUILayout.FlexibleSpace();
+        
+        
         GUILayout.Label("Station Id");
         _stationId = GUILayout.TextField(_stationId, GUILayout.Width(20));
         if (GUILayout.Button("Join"))
@@ -84,6 +93,13 @@ class TestGui : MonoBehaviour
         var info = infos[stationIndex];
         if (info == null) return;
         var preset = Constants.Presets[info.preset_index];
+
+        if (GUILayout.Button("Join As"))
+        {
+            StationManager.StationId = stationIndex;
+            StopAllCoroutines();
+            SceneManager.LoadScene(1);
+        }
 
         GUILayout.Label("Color: " + info.color);
         GUILayout.Label("Preset: " + info.preset_index);

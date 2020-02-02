@@ -45,4 +45,11 @@ public class NetworkManager : MonoBehaviour
         var asyncOperation = request.SendWebRequest();
         return new NetCall(request, asyncOperation);
     }
+
+    public NetCall Stop()
+    {
+        var request = UnityWebRequest.Get($"{Url}stop");
+        var asyncOperation = request.SendWebRequest();
+        return new NetCall(request, asyncOperation);
+    }
 }

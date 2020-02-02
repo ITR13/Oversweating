@@ -26,7 +26,16 @@ public class UiStation : MonoBehaviour
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
     {
+        if (
+            stationInfo.status ==
+            Constants.StatusStrings[StationStatus.Stopped]
+        )
+        {
+            return;
+        }
+
         var pallette = Constants.Pallettes[stationInfo.color];
+
         /*
         foreach (var background in backgrounds)
         {
@@ -36,13 +45,6 @@ public class UiStation : MonoBehaviour
 
         var warn = stationInfo.status ==
                    Constants.StatusStrings[StationStatus.Warning];
-
-        if (stationInfo.status ==
-            Constants.StatusStrings[StationStatus.Failed])
-        {
-            SceneManager.LoadScene(0);
-        }
-
 
         _targetVolume = warn ? 1 : 0;
 
