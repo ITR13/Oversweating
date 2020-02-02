@@ -62,10 +62,15 @@ class Gameloop(Thread):
 		self.recalc_safe_stations()
 
 	def next_wave(self):
-		if len(self.waves) == 0:
-			return self.waves[0]
 		wave = self.waves[0]
-		self.waves = self.waves[1:]
+		wave = {
+			"delay": wave["delay"],
+			"faults": wave["faults"][:len(self.ship.stations) - 1]
+		}
+		print(wave)
+		
+		if len(self.waves) > 1:
+			self.waves = self.waves[1:]
 		return wave
 
 	def check_faults_cleared(self):
