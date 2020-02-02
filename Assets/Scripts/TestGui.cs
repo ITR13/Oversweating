@@ -8,6 +8,7 @@ class TestGui : MonoBehaviour
     private string _stationCount = "5", _playerCount = "2", _stationId = "";
     private StationInfo[] infos = new StationInfo[5];
     private float[] timers = new float[5];
+    private float[] health = new float[5];
 
     private void Start()
     {
@@ -22,19 +23,17 @@ class TestGui : MonoBehaviour
     {
         for (var i = 0; i < timers.Length; i++)
         {
-            if (infos[i] == null || infos[i].end_time <= 0)
+            if (infos[i] == null || infos[i].health <= 0)
             {
                 timers[i] = -1;
+                health[i] = -1;
                 continue;
             }
 
-            var now = DateTime.Now.AddHours(-1); // Hack timezone fix
-            var currentSeconds = (now - Constants.Epoch).TotalSeconds;
-            var delta = infos[i].end_time - currentSeconds;
-            if (delta < 0) delta = 0;
-            timers[i] = (float)delta;
+            timers[i] = (float) infos[i].fault_timer;
+            health[i] = (float) infos[i].health;
         }
-    }       
+    }
 
     private void OnGUI()
     {
@@ -81,7 +80,9 @@ class TestGui : MonoBehaviour
         for (var i = 0; i < infos.Length; i++)
         {
             var width = 150;
-            GUILayout.BeginArea(new Rect(20 + (width + 5) * i, 45, width, 400));
+            GUILayout.BeginArea(
+                new Rect(20 + (width + 5) * i, 45, width, Screen.height - 45)
+            );
             DisplayTerminal(i);
             GUILayout.EndArea();
         }
@@ -112,6 +113,7 @@ class TestGui : MonoBehaviour
         GUILayout.Label("Color: " + info.color);
         GUILayout.Label("Preset: " + info.preset_index);
         GUILayout.Label("Status: " + info.status);
+        GUILayout.Label("Health: " + info.health);
 
         if (info.components == null)
         {

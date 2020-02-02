@@ -9,7 +9,8 @@ public class StationInfo
     public string status;
     public FaultList[] faults;
     public int fault_id;
-    public double end_time;
+    public double fault_timer;
+    public double health;
 
     public override string ToString()
     {

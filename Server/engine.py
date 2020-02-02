@@ -38,7 +38,7 @@ class Gameloop(Thread):
 
 			self.check_next_wave(delta_time)
 			self.check_faults_cleared()
-			self.check_faults_lost(current_time)
+			self.check_faults_lost(delta_time)
 
 		if self.stopped:
 			return
@@ -67,7 +67,6 @@ class Gameloop(Thread):
 			"delay": wave["delay"],
 			"faults": wave["faults"][:len(self.ship.stations) - 1]
 		}
-		print(wave)
 		
 		if len(self.waves) > 1:
 			self.waves = self.waves[1:]
@@ -92,14 +91,19 @@ class Gameloop(Thread):
 				station.clear_faults()
 				self.recalc_safe_stations()
 
-	def check_faults_lost(self, current_time):
+	def check_faults_lost(self, dt):
 		for station in self.ship.stations:
-			if station.end_time is None:
+			if station.fault_timer is None:
 				continue
-			if station.end_time + 1 <= current_time:
-				self.ship.fail()
-				self.lost = True
+			if station.fault_timer > FAULT_LENIENCY:
+				self.ship.health -= dt
 				break
+			station.fault_timer += dt
+		
+		if self.ship.health <= 0:
+			self.ship.health = 0
+			self.ship.fail()
+			self.lost = True
 
 	def recalc_safe_stations(self):
 		self.safe_stations = 0
@@ -120,7 +124,7 @@ class Station:
 		self.components = [0] * len(self.component_names)
 
 		self.faults = None
-		self.end_time = None
+		self.fault_timer = None
 		self.fault_id = -1
 
 
@@ -165,17 +169,17 @@ class Station:
 	def fail(self):
 		self.status = FAILED
 
-	def set_faults(self, faults, end_time):
+	def set_faults(self, faults):
 		self.status = WARNING
 		self.faults = faults
-		self.end_time = end_time
+		self.fault_timer = 0
 		self.fault_id = random.randint(1, 10000000)
-		print(f"Warning on {self.index}, ending at {end_time}")
+		print(f"Warning on {self.index}")
 
 	def clear_faults(self):
 		self.status = RUNNING
 		self.faults = None
-		self.end_time = None
+		self.fault_timer = None
 		print(f"Cleared {self.index}")
 
 	def has_state(self, component_states):
@@ -218,7 +222,8 @@ class Station:
 			"components": self.components,
 			"faults": faults,
 			"fault_id": self.fault_id,
-			"end_time": self.end_time if self.end_time is not None else -1.0,
+			"fault_timer": self.fault_timer if self.fault_timer is not None else -1.0,
+			"health": self.ship.health / FAULT_HEALTH
 		}
 
 
@@ -226,6 +231,7 @@ class Ship:
 	def __init__(self, station_count, player_count):
 		self.station_count = station_count
 		self.player_count = player_count
+		self.health = FAULT_HEALTH
 
 		presets = list(range(station_count))
 		random.shuffle(presets)
@@ -261,7 +267,7 @@ class Ship:
 			for faults, station
 			in zip(fault_list, selected_stations)
 		]
-		selected_station.set_faults(station_faults, time() + 32)
+		selected_station.set_faults(station_faults)
 
 
 	def stop(self):

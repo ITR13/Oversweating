@@ -13,6 +13,9 @@ WAITING = "waiting"
 READY = "ready"
 
 
+FAULT_HEALTH = 100
+FAULT_LENIENCY = 2.5
+
 LEVER_MAX = 3
 
 COMPONENTS = {
