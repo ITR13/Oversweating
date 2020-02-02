@@ -12,6 +12,7 @@ public class StationInfo
     public int preset_index;
     public string status;
     public FaultList[] faults;
+    public int fault_count;
     public double end_time;
 
     public override string ToString()
@@ -30,6 +31,7 @@ public class FaultList
 [Serializable]
 public class TargetChunk
 {
+    public string component_name;
     public Target[] targets;
 }
 

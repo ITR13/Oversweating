@@ -98,7 +98,8 @@ class Gameloop(Thread):
 
 
 class Station:
-	def __init__(self, index, preset_index):
+	def __init__(self, ship, index, preset_index):
+		self.ship = ship
 		self.index = index
 		self.color = COLORS[index]
 		self.status = RUNNING
@@ -155,6 +156,7 @@ class Station:
 		self.status = WARNING
 		self.faults = faults
 		self.end_time = end_time
+		self.fault_count += 1
 		print(f"Warning on {self.index}, ending at {end_time}")
 
 	def clear_faults(self):
@@ -175,6 +177,7 @@ class Station:
 				"station_id": fault[0],
 				"chunks": [
 					{
+						"component_name": self.ship.stations[fault[0]].component_names[chunk[0][0]],
 						"targets": [
 							{
 								"component_id": target[0],
@@ -195,6 +198,7 @@ class Station:
 			"preset_index": self.preset_index,
 			"components": self.components,
 			"faults": faults,
+			"fault_count": self.fault_count,
 			"end_time": self.end_time if self.end_time is not None else -1.0,
 		}
 
@@ -205,7 +209,7 @@ class Ship:
 		self.player_count = player_count
 
 		self.stations = [
-			Station(i, 0)
+			Station(self, i, 0)
 			for i in range(station_count)
 		]
 

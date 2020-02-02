@@ -54,8 +54,8 @@ public class UiComponent : MonoBehaviour
 
         var index =
             (
-                    _state * Constants.ColorCount + 
-                    _color % Constants.ColorCount
+                _state * Constants.ColorCount + 
+                _color % Constants.ColorCount
             ) % sprites.Length;
 
         image.sprite = sprites[index];

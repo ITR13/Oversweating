@@ -6,23 +6,31 @@ public class UiStation : MonoBehaviour
 {
     public int presetId = -1;
     [SerializeField]
-    private Image componentBackground, alarmBackground;
+    private Image[] backgrounds;
 
     [SerializeField] private UiComponent warningSign = null;
     [SerializeField] private UiComponent[] uiComponents = new UiComponent[0];
 
+    [SerializeField] private Transform taskParent;
+    [SerializeField] private UiTask taskPrefab;
+
+    private int prevFaultCount = -1;
+
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick)
     {
         var pallette = Constants.Pallettes[stationInfo.color];
-        // componentBackground.color = pallette.BackgroundColor;
-        // alarmBackground.color = pallette.BackgroundColor;
+        /*
+        foreach (var background in backgrounds)
+        {
+            background.color = pallette.BackgroundColor;
+        }
+        */
+
+        var warn = stationInfo.status ==
+                   Constants.StatusStrings[StationStatus.Warning];
 
         warningSign.color = pallette.Index;
-        warningSign.state =
-            stationInfo.status ==
-            Constants.StatusStrings[StationStatus.Warning]
-                ? 1
-                : 0;
+        warningSign.state = warn ? 1 : 0;
 
         for (var i = 0; i < uiComponents.Length; i++)
         {
@@ -39,5 +47,20 @@ public class UiStation : MonoBehaviour
                     onClick.Invoke(componentIndex, button);
             }
         }
+
+        if (!warn || stationInfo.fault_count == prevFaultCount) return;
+        prevFaultCount = stationInfo.fault_count;
+
+
+        foreach (var faultList in stationInfo.faults)
+        {
+            AddTask(faultList);
+        }
+    }
+
+    private void AddTask(FaultList faultList)
+    {
+        var child = Instantiate(taskPrefab, taskParent);
+        child.Set(faultList);
     }
 }
