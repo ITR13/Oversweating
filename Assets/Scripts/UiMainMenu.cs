@@ -4,17 +4,37 @@ using UnityEngine.UI;
 
 public class UiMainMenu : MonoBehaviour
 {
+    private static bool _muted = true;
+
     [SerializeField] private GameObject serverOffline;
     [SerializeField] private GameObject computerCountSelect;
     [SerializeField] private GameObject stationSelect;
 
     [SerializeField] private Image[] stationButtons;
 
+    [SerializeField] private AudioSource backgroundMusic;
+    
     private AsyncOperation _currentOperation = null;
     private GameInfo _lastGameInfo;
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            // ReSharper disable once AssignmentInConditionalExpression
+            if (_muted = !_muted)
+            {
+                backgroundMusic.Stop();
+            }
+            else
+            {
+                backgroundMusic.Play();
+            }
+
+            Debug.Log(_muted);
+        }
+
+
         if (!NetworkManager.InstanceSet) return;
 
         if (_currentOperation != null)
