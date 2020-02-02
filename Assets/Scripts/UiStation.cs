@@ -24,6 +24,9 @@ public class UiStation : MonoBehaviour
     [SerializeField]
     private AudioSource alarm;
 
+    [SerializeField]
+    private Image healthBar;
+
     private float _targetVolume = 0;
 
     public void UpdateInfo(StationInfo stationInfo, Action<int, int> onClick, Action ready)
@@ -38,7 +41,8 @@ public class UiStation : MonoBehaviour
             );
             return;
         }
-        
+
+        healthBar.fillAmount = (float)stationInfo.health;
 
         var warn = false;
         _targetVolume = 0;

@@ -300,6 +300,7 @@ MonoBehaviour:
   taskPrefab: {fileID: 8975167840124190131, guid: cb02223e6ed84e34b98c1149bb8e9e3f,
     type: 3}
   alarm: {fileID: 4787456206387612222}
+  healthBar: {fileID: 5489577609144900039}
 --- !u!20 &4787456206387612221
 Camera:
   m_ObjectHideFlags: 0
@@ -454,6 +455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4787456205574011029}
     m_Modifications:
+    - target: {fileID: 3777155108146586979, guid: 35f5f809bc7450844b7a60af278358d0,
+        type: 3}
+      propertyPath: health
+      value: -63
+      objectReference: {fileID: 0}
     - target: {fileID: 6201485490976806254, guid: 35f5f809bc7450844b7a60af278358d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -605,6 +611,18 @@ RectTransform:
 --- !u!114 &4787456204465665685 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6201485491036752337, guid: 35f5f809bc7450844b7a60af278358d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1468292500389527364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5489577609144900039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6363175055321687683, guid: 35f5f809bc7450844b7a60af278358d0,
     type: 3}
   m_PrefabInstance: {fileID: 1468292500389527364}
   m_PrefabAsset: {fileID: 0}

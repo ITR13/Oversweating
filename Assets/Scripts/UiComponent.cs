@@ -11,10 +11,9 @@ public class UiComponent : MonoBehaviour
     [SerializeField] private Texture2D spriteSheet;
     [SerializeField] private Image image;
 
-
     private int _state, _color;
     public int state, color;
-
+    
     public Action<int> onClick;
 
 
